@@ -5,12 +5,7 @@ import jiexceptions
 import utils
 
 
-@click.group()
-def run():
-    pass
-
-
-@run.command()
+@click.command()
 @click.option('--ticket', required=True, prompt='Ticket ID', help='Ticket you want to log time for')
 @click.option('--time', prompt='Time', default='15m', help='Time you\'d like to log')
 @click.option('--date', help="Date you'd like log time for")
@@ -33,10 +28,10 @@ def logtime(ticket, time, date=None):
     except jiexceptions.JITicketNotFoundException:
         print(f'Ticket {ticket} wasn\'t found in JIRA 🚨🤦🏻')
     except Exception as e:
-        print(e)
+        raise SystemExit(f'Oooops, something went wrong: {e}')
 
     print("You're all done! 🍻")
 
 
 if __name__ == '__main__':
-    run()
+    logtime()
