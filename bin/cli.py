@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import click
-import ji
-import jiexceptions
-import utils
+from jiti import ji
+from jiti import utils
+from jiti import jiexceptions
 
 
 @click.command()
@@ -24,9 +24,9 @@ def logtime(ticket, time, date=None):
             add_date=date
         )
     except jiexceptions.JIAPIError:
-        print("Can't register worklog, something went wrong (On API side) 🚨")
+        raise SystemExit("Can't register worklog, something went wrong (On API side) 🚨")
     except jiexceptions.JITicketNotFoundException:
-        print(f'Ticket {ticket} wasn\'t found in JIRA 🚨🤦🏻')
+        raise SystemExit(f'Ticket {ticket} wasn\'t found in JIRA 🚨🤦🏻')
     except Exception as e:
         raise SystemExit(f'Oooops, something went wrong: {e}')
 
