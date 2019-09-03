@@ -5,7 +5,7 @@ from datetime import date, datetime
 
 def get_config_path():
     home = str(Path.home())
-    return os.path.join(home, '.env_jipy')
+    return os.path.join(home, '.jiti_credentials')
 
 
 def ensure_env_file():

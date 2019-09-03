@@ -8,8 +8,8 @@ from .settings import conf
 
 def _init_jira():
     payload = {
-        'server': 'http://{}'.format(conf['credentials']['host']),
-        'auth': (conf['credentials']['login'], conf['credentials']['password'])
+        'server': conf['credentials']['host'],
+        'basic_auth': (conf['credentials']['email'], conf['credentials']['token'])
 
     }
     return JIRA(**payload)
