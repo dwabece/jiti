@@ -5,12 +5,12 @@ from setuptools import setup
 
 REQUIREMENTS = [
     'jira',
-    'click'
+    'fire'
 ]
 
 setup(
     name='jiti',
-    version='1.1',
+    version='1.3',
     description='',
     python_requires='>3.6',
     url='https://github.com/dwabece/jiti',
