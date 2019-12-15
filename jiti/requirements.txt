@@ -1,2 +1,8 @@
 jira
 click
+
+pytest
+isort
+pylint
+black
+ipdb

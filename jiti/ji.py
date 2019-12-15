@@ -1,8 +1,7 @@
 from jira import JIRA
 from jira import exceptions as jira_exc
 
-from . import jiexceptions
-from . import utils
+from . import jiexceptions, utils
 from .settings import conf
 
 

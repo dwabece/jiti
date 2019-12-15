@@ -3,9 +3,16 @@ import click
 from jiti import ji
 from jiti import utils
 from jiti import jiexceptions
+from jiti import worklogs
+from datetime import timedelta
 
 
-@click.command()
+@click.group()
+def jiticli():
+    pass
+
+
+@jiticli.command()
 @click.option('--ticket', required=True, prompt='Ticket ID', help='Ticket you want to log time for')
 @click.option('--time', prompt='Time', default='15m', help='Time you\'d like to log')
 @click.option('--date', help="Date you'd like log time for")
@@ -14,7 +21,6 @@ def logtime(ticket, time, date=None):
 
     msg = f'Registering {time} for {ticket}'
     msg += f' on date {date}' if date else ''
-    msg += '...'
     print(msg)
 
     try:
@@ -33,5 +39,18 @@ def logtime(ticket, time, date=None):
     print("You're all done! 🍻")
 
 
+@jiticli.command()
+@click.option('--days', help="Days back you'd like to check your worklog", type=int)
+def worklog(days=None):
+    worklog = worklogs.get_worklog(days).__dict__
+    if not worklog:
+        print('You havent logged anything for today')
+
+    for (date, time) in worklog.items():
+        utils.print_worklog_entry(date, time)
+
+
+cli = click.CommandCollection(sources=[jiticli])
+
 if __name__ == '__main__':
-    logtime()
+    cli()
