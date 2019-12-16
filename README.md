@@ -3,7 +3,7 @@ Not sure if I'm that lazy or jira's interface is that bad.
 
 <img src="https://i.imgur.com/aOb1mZf.gif" alt="demo jiti" height="320px">
 
-### Installation
+## Installation
 Install it from pypi:
 ```
 pip install --user jiti
@@ -11,7 +11,7 @@ pip install --user jiti
 
 Create config file:
 ```
-touch ~/.jiti_credentials
+touch ~/.jiti_settings
 ```
 
 Example credentials file:
@@ -20,19 +20,29 @@ Example credentials file:
 host=https://your-jira-address.atlassian.net
 email=email
 token=your api token
+
+[configuration]
+worklog_threshold=27000
 ```
 
 You can obtain your api token [here](https://id.atlassian.com/manage/api-tokens)
 
 
-### Usage
+## Usage
+### Time logging
 You can log hours in two ways, just simply run ```jiti``` and it will prompt you for details:
-
 
 or
 
 ```
-jiti --ticket OP-808 --time 10m --date 2019-09-01
+jiti logtime --ticket OP-808 --time 10m --date 2019-09-01
 ```
 
 Please note that __date is not mandatory__, leaving it empty will set logging date to present day.
+
+### Checking your logged time
+```
+jiti worklog --days 5
+```
+
+**days** argument is not mandatory. If empty, jiti will print out worklog for `today`.
