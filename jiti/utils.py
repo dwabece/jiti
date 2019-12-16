@@ -12,7 +12,7 @@ def make_comment(time_spent):
 
 def make_date(date_str):
     date_chopped = [int(date_part) for date_part in date_str.split('-')]
-    return date(*date_chopped)
+    return datetime.date(*date_chopped)
 
 
 def date_from_jira_string(worklog_date):
