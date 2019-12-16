@@ -15,6 +15,10 @@ def _init_jira():
 
 
 def add_time(ticket_number, time_spent, add_date=None):
+    """
+    Compose payload to log the time and fire a request to the API
+
+    """
     jira = _init_jira()
     payload = {}
 

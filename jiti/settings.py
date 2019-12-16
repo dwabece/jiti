@@ -12,6 +12,7 @@ def ensure_env_file():
     if not os.path.exists(get_config_path()):
         raise SystemExit('Config file not found')
 
+
 conf = configparser.ConfigParser()
 config_file = get_config_path()
 conf.read(config_file)

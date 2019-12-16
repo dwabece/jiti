@@ -1,7 +1,4 @@
-
 import datetime
-
-
 from jiti import settings
 
 
